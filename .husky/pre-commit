@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/husky.sh"
+
+yarn pretty-quick --staged && yarn lint-staged
