@@ -45,7 +45,7 @@ export class APIRequest {
 
 		if (data && data.query && typeof data.query === 'object') {
 			const queryString = Object.entries(data.query)
-				.filter(([, value]) => value !== null && typeof value !== undefined)
+				.filter(([, value]) => value !== null && value !== undefined)
 				.map(([key, value]) => `${key}=${value}`)
 				.join('&');
 

@@ -11,6 +11,7 @@ import {
 	GeneresManager,
 	MarketsManager,
 	PlaylistsManager,
+	SearchManager,
 	ShowsManager,
 	TracksManager
 } from '../managers';
@@ -89,6 +90,11 @@ export class Client {
 	public playlists!: PlaylistsManager;
 
 	/**
+	 * The manager for making searches.
+	 */
+	public searches!: SearchManager;
+
+	/**
 	 * The manager for handling shows.
 	 * @type {ShowsManager}
 	 */
@@ -147,6 +153,7 @@ export class Client {
 		this.genres = new GeneresManager(this);
 		this.markets = new MarketsManager(this);
 		this.playlists = new PlaylistsManager(this);
+		this.searches = new SearchManager(this);
 		this.shows = new ShowsManager(this);
 		this.tracks = new TracksManager(this);
 	}
