@@ -47,6 +47,14 @@ describe('All Manager tests', () => {
 		return expect(data).toBeInstanceOf(Playlist);
 	});
 
+	test('SearchesManager.serach returns an array of Track, when searched for a Track', async () => {
+		const data = await client.searches.search({
+			query: 'Gul - Anuv Jain',
+			type: ['track']
+		});
+		return expect(data).toEqual(expect.arrayContaining([expect.any(Track)]));
+	});
+
 	test('ShowsManager.fetch returns Show', async () => {
 		const data = await client.shows.fetch('38bS44xjbVVZ3No3ByF1dJ', 'US');
 		return expect(data).toBeInstanceOf(Show);
