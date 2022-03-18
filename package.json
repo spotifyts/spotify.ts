@@ -17,7 +17,7 @@
 		"build": "yarn tsc -b src && yarn gen-esm",
 		"format": "yarn prettier --write {src,tests}/**/*.ts",
 		"test": "yarn jest",
-		"prepublishOnly": "yarn build && yarn format && yarn test",
+		"prepublishOnly": "yarn build && yarn format",
 		"lint": "yarn eslint src tests --ext ts --fix",
 		"gen-esm": "yarn gen-esm-wrapper dist/index.js dist/index.mjs",
 		"prepare": "yarn husky install"
