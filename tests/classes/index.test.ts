@@ -2,13 +2,17 @@ import { Client, Track } from '../../src';
 
 let client: Client;
 
-beforeEach(async () => {
+beforeAll(async () => {
 	const newClient = new Client({
 		clientId: process.env.CLIENT_ID!,
 		clientSecret: process.env.CLIENT_SECRET!
 	});
 	await newClient.start();
 	client = newClient;
+});
+
+afterAll(() => {
+	client.destroy();
 });
 
 describe('All Classes tests', () => {
