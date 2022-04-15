@@ -29,12 +29,7 @@ export interface ClientOptions {
 	/**
 	 * The access token generated from the client ID and secret.
 	 */
-	accessToken?: string;
-
-	/**
-	 * The refresh token generated from the accessToken, used to make requests.
-	 */
-	refreshToken?: string;
+	accessToken?: string | null;
 }
 
 export class Client {
@@ -108,6 +103,11 @@ export class Client {
 	 */
 	public tracks!: TracksManager;
 
+	/**
+	 * The interval where the oauth token is re-generated.
+	 */
+	private interval!: NodeJS.Timeout;
+
 	public constructor(options: ClientOptions) {
 		const { clientId, clientSecret } = options;
 
@@ -125,9 +125,19 @@ export class Client {
 	 */
 	public async start(): Promise<this> {
 		const { expiresIn } = await getAccessToken(this);
-		setInterval(() => getAccessToken(this), expiresIn * 1000);
+		this.interval = setInterval(() => getAccessToken(this), expiresIn * 1000);
 
 		this.registerManagers();
+		return this;
+	}
+
+	/**
+	 * Destroys the Client, clears its interval.
+	 */
+	public destroy(): this {
+		clearTimeout(this.interval);
+		this.options.accessToken = null;
+
 		return this;
 	}
 

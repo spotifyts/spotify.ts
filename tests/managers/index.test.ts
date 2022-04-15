@@ -11,6 +11,10 @@ beforeEach(async () => {
 	client = newClient;
 });
 
+afterAll(() => {
+	client.destroy();
+});
+
 describe('All Manager tests', () => {
 	test('AlbumsManager.fetch returns Album', async () => {
 		const data = await client.albums.fetch('21jF5jlMtzo94wbxmJ18aa');

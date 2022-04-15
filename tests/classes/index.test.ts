@@ -11,6 +11,10 @@ beforeEach(async () => {
 	client = newClient;
 });
 
+afterAll(() => {
+	client.destroy();
+});
+
 describe('All Classes tests', () => {
 	test('Album.getTracks returns array of Album', async () => {
 		const album = await client.albums.fetch('21jF5jlMtzo94wbxmJ18aa'); // returns Album class
