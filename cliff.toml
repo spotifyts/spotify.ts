@@ -4,6 +4,7 @@
 # changelog header
 header = """
 # Changelog\n
+All notable changes to this project will be documented in this file.
 """
 # template for the changelog body
 # https://tera.netlify.app/docs/#introduction
@@ -32,6 +33,7 @@ filter_unconventional = true
 commit_parsers = [
     { message = "^feat", group = "Features"},
     { message = "^fix", group = "Bug Fixes"},
+    { message = "fix(deps)", skip = true },
     { message = "^doc", group = "Documentation"},
     { message = "^perf", group = "Performance"},
     { message = "^refactor", group = "Refactor"},
