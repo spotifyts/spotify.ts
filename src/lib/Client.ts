@@ -1,6 +1,5 @@
-import { URLSearchParams } from 'node:url';
-import { SpotifyTSError, SpotifyAPIError } from './errors';
-import { RequestMethods } from './Constants';
+import { getAccessToken } from './util/util';
+import { SpotifyTSError } from './errors';
 
 import { RestManager } from './rest';
 import {
@@ -15,8 +14,6 @@ import {
 	ShowsManager,
 	TracksManager
 } from '../managers';
-
-import phin from 'phin';
 
 export interface ClientOptions {
 	/**
@@ -33,6 +30,11 @@ export interface ClientOptions {
 	 * The access token generated from the client ID and secret.
 	 */
 	accessToken?: string;
+
+	/**
+	 * The refresh token generated from the accessToken, used to make requests.
+	 */
+	refreshToken?: string;
 }
 
 export class Client {
@@ -118,27 +120,12 @@ export class Client {
 	}
 
 	/**
-	 * Generates an Oauth token used for making requests to the Spotify API. It is necessary to call this method before using any managers.
+	 * Generates (and keeps generating a new token every hour or so) an Oauth token used for making requests to the Spotify API. It is necessary to call this method before using any managers.
 	 * @returns {Promise<Client>} The instantiated client.
 	 */
 	public async start(): Promise<this> {
-		const { clientId, clientSecret } = this.options;
-		const encodedCreds = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
-
-		const { body, statusCode } = await phin({
-			method: RequestMethods.Post,
-			url: 'https://accounts.spotify.com/api/token',
-			headers: {
-				Authorization: `Basic ${encodedCreds}`,
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			data: new URLSearchParams({ grant_type: 'client_credentials' }).toString(),
-			parse: 'json'
-		});
-
-		const parsed = body as SpotifyAPIAccessTokenResponse;
-		if (parsed.error && parsed.error_description) throw new SpotifyAPIError(parsed.error_description, statusCode!, parsed.error);
-		this.options.accessToken = parsed.access_token;
+		const { expiresIn } = await getAccessToken(this);
+		setInterval(() => getAccessToken(this), expiresIn * 1000);
 
 		this.registerManagers();
 		return this;
@@ -157,10 +144,4 @@ export class Client {
 		this.shows = new ShowsManager(this);
 		this.tracks = new TracksManager(this);
 	}
-}
-
-interface SpotifyAPIAccessTokenResponse {
-	access_token: string;
-	error?: string;
-	error_description?: string;
 }
