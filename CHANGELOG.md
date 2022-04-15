@@ -2,8 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### Features
-
 ## [1.1.0](https://github.com/spotifyts/spotify.ts/compare/v1.0.5...v1.1.0) (2022-04-15)
 
 ### Features
