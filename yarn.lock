@@ -604,10 +604,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordjs/collection@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "@discordjs/collection@npm:0.5.0"
-  checksum: a228979bb5f955cf095ce47441c55d0196cd99ff8484b57d26a45e58506c6646d776a98a9e11b822aab4e15fb2ac1aecfdebc63cde8ab7d04d3d74b716e80144
+"@discordjs/collection@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@discordjs/collection@npm:0.6.0"
+  checksum: a08826f04e3ddaf079913e2e2069727d518b5a0ea79cbeb66d8b559297df6586a25490b4b2aeab631483f68c2160df769115b9b3e114d8437b707dec80b02bab
   languageName: node
   linkType: hard
 
@@ -6202,7 +6202,7 @@ __metadata:
   resolution: "spotify.ts@workspace:."
   dependencies:
     "@commitlint/config-conventional": ^16.2.1
-    "@discordjs/collection": ^0.5.0
+    "@discordjs/collection": ^0.6.0
     "@sapphire/async-queue": ^1.3.1
     "@sapphire/eslint-config": ^4.3.3
     "@sapphire/prettier-config": ^1.4.2
