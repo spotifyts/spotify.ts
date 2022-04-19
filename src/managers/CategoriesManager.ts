@@ -11,7 +11,7 @@ export class CategoriesManager extends BaseManager {
 	 * @param {string} id: The ID of the category.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. If specified, only the content available in this country will be returned, if not, the country of the current user will be used.
 	 * @param {string} [locale]: The desired language, consisting of an ISO 639-1 language code and an ISO 3166-1 alpha-2 country code, joined by an underscore. For example: es_MX, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. If not specified, the default, en_US (American English) will be used.
-	 * @returns {Promise<Category>} The category
+	 * @returns {Promise<Category>} Category object
 	 */
 	public async fetch(id: string, country?: string, locale?: string): Promise<Category> {
 		if (!id) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'CategoriesManager', 'fetch', 'id');
@@ -30,7 +30,7 @@ export class CategoriesManager extends BaseManager {
 	/**
 	 * Fetch several categories.
 	 * @param {FetchSeveralOptions} [options]: The options for fetching categories.
-	 * @returns {Promise<Category[]>} The categories.
+	 * @returns {Promise<Category[]>} Array of Category objects.
 	 */
 	public async fetchSeveral(options?: FetchSeveralOptions): Promise<Category[]> {
 		const { query } = new RequestData({ query: {} });

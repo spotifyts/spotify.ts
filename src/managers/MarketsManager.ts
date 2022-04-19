@@ -6,6 +6,10 @@ export class MarketsManager extends BaseManager {
 		super(client, 'markets');
 	}
 
+	/**
+	 * Get a list of markets where Spotify is available.
+	 * @returns {Promise<string[]>} Array of strings
+	 */
 	public async fetchAvailable(): Promise<string[]> {
 		const { markets } = await super.get();
 		return markets;

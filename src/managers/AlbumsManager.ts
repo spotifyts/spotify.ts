@@ -55,7 +55,7 @@ export class AlbumsManager extends BaseManager {
 	 * @param {number} [limit]: The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. Supply this parameter to limit the response to one particular geographical market.
 	 * @param {number} [offset]: The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-	 * @returns {Promise<Track[]>}: An APIAlbumTrack object containing the tracks in the items property.
+	 * @returns {Promise<Track[]>}: Array of Track objects
 	 */
 	public async getTracks(id: string, limit?: number, country?: string, offset?: number): Promise<Track[]> {
 		limit ??= 20;
@@ -82,7 +82,7 @@ export class AlbumsManager extends BaseManager {
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. Supply this parameter to limit the response to one particular geographical market.
 	 * @param {number} [limit]: The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 	 * @param {number} [offset]: The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-	 * @returns {Promise<Album[]>} Objects of newly released albums.
+	 * @returns {Promise<Album[]>} Array of Album objects
 	 */
 	public async getNewReleases(country?: string, limit?: number, offset?: number): Promise<Album[]> {
 		limit ??= 20;

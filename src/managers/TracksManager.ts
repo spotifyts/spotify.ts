@@ -10,7 +10,7 @@ export class TracksManager extends BaseManager {
 	 * Fetch a Spotify Track by its ID.
 	 * @param {string} id: The Spotify ID of the track.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code, if specified,  returns only the content available in this country. If this argument is not specified, the country code of the user account will be used.
-	 * @returns {Promise<Track>} The fetched track.
+	 * @returns {Promise<Track>} Track object.
 	 */
 	public async fetch(id: string, country?: string): Promise<Track> {
 		if (!id) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'TracksManager', 'fetch', 'id');
@@ -28,7 +28,7 @@ export class TracksManager extends BaseManager {
 	 * Fetch multiple Spotify Tracks by their IDs.
 	 * @param {string[]} ids: The Spotify IDs of the tracks.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code, if specified,  returns only the content available in this country. If this argument is not specified, the country code of the user account will be used.
-	 * @returns {Promise<Track[]>} The fetched tracks.
+	 * @returns {Promise<Track[]>} Array of fetched tracks
 	 */
 	public async fetchSeveral(ids: string[], country?: string): Promise<Track[]> {
 		if (!ids || !ids.length) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'TracksManager', 'fetchSeveral', 'ids');

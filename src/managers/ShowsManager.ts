@@ -10,7 +10,7 @@ export class ShowsManager extends BaseManager {
 	 * Get a show by its Spotify ID.
 	 * @param {string} id: The ID of the show.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. This is required as the Spotify API has a bug due to which a 404 error is returned if no country parameter is specified.
-	 * @returns {Promise<Show>} The show.
+	 * @returns {Promise<Show>} Show object.
 	 */
 	public async fetch(id: string, country: string): Promise<Show> {
 		if (!id) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'ShowsManager', 'fetch', 'id');
@@ -28,7 +28,7 @@ export class ShowsManager extends BaseManager {
 	 * Get several shows by their Spotify IDs.
 	 * @param {Array<string>} ids: The IDs of the shows.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. If specified, only the content available in this country will be returned, if not, the country of the current user will be used.
-	 * @returns {Promise<Show[]>}
+	 * @returns {Promise<Show[]>} Array of Show objects.
 	 */
 	public async fetchSeveral(ids: string[], country?: string): Promise<Show[]> {
 		if (!ids || !ids?.length) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'ShowsManager', 'fetchSeveral', 'ids');
@@ -56,8 +56,9 @@ export class ShowsManager extends BaseManager {
 	 * @param {number} [limit]: The maximum number of episodes to return. Default: 20. Minimum: 1. Maximum: 50.
 	 * @param {number} [offset]: The index of the first episode to return. Default: 0 (the first object). Use with limit to get the next set of episodes.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. If specified, only the content available in this country will be returned, if not, the country of the current user will be used.
+	 * @returns {Promise<Episode[]>} Array of Episode objects.
 	 */
-	public async getEpisodes(id: string, limit?: number, offset?: number, country?: string) {
+	public async getEpisodes(id: string, limit?: number, offset?: number, country?: string): Promise<Episode[]> {
 		limit ??= 20;
 		offset ??= 0;
 

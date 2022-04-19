@@ -28,12 +28,13 @@ export class SearchManager extends BaseManager {
 	 * @param {SearchOptions['limit']} [options.limit]: The maximum number of results to return. Default: 20. Minimum: 1. Maximum: 50.
 	 * @param {SearchOptions['market']} [options.market]: An ISO 3166-1 alpha-2 country code. If provided, only content available in this market will be returned.
 	 * @param {SearchOptions['offset']} [options.offset]: The index of the first result to return. Use with limit to get the next page of search results. Default value 0, maximum 1000.
+	 * @returns {Promise<(Track | Artist | Album | Playlist | Show | Episode)[]>} The search results.
 	 */
-	public async search(options: SearchOptions) {
+	public async search(options: SearchOptions): Promise<(Track | Artist | Album | Playlist | Show | Episode)[]> {
 		let { query, type, include_external, limit, market, offset } = options;
 
-		if (!query) throw new SpotifyTSError('MANAGER_ARGUMENT_MISSING', 'SearchesManager', 'search', 'query');
-		if (!type) throw new SpotifyTSError('MANAGER_ARGUMENT_MISSING', 'SearchesManager', 'search', 'type');
+		if (!query) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'SearchesManager', 'search', 'query');
+		if (!type) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'SearchesManager', 'search', 'type');
 
 		if (typeof query !== 'string') throw new SpotifyTSError('MANAGER_ARGUMENT_INVALID_TYPE', 'SearchManager', 'search', 'query', 'string');
 		if (!Array.isArray(type)) throw new SpotifyTSError('MANAGER_ARGUMENT_INVALID_TYPE', 'SearchManager', 'search', 'type', 'SearchOptionsType[]');

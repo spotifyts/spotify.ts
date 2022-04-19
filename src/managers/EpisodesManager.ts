@@ -10,7 +10,7 @@ export class EpisodesManager extends BaseManager {
 	 * Fetch an episode by its Spotify ID.
 	 * @param {string} id: The Spotify ID of the episode.
 	 * @param {string} country: The ISO 3166-1 alpha-2 country code. This parameter is required due to a bug with the Spotify API not returning a valid response without the country parameter. See more here: https://stackoverflow.com/a/70476680/14950646
-	 * @returns {Promise<Episode>} The fetched episode.
+	 * @returns {Promise<Episode>} Episode object.
 	 */
 	public async fetch(id: string, country: string): Promise<Episode> {
 		if (!id) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'EpisodesManager', 'fetch', 'id');
@@ -28,7 +28,7 @@ export class EpisodesManager extends BaseManager {
 	 * Fetch several episodes by their Spotify IDs.
 	 * @param {Array<string>} ids: The Spotify IDs of the episodes.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code, if specified,  returns only the content available in this country. If this argument is not specified, the country code of the user account will be used.
-	 * @returns {Promise<Episode[]>} The fetched episodes.
+	 * @returns {Promise<Episode[]>} Array of Episode objects.
 	 */
 	public async fetchSeveral(ids: string[], country?: string): Promise<Episode[]> {
 		if (!ids || !ids?.length) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'EpisodesManager', 'fetch', 'ids');
