@@ -33,7 +33,7 @@ export class Playlist extends Base {
 	public snapshot_id!: string;
 
 	/**
-	 * The playlist's public/private status: true the playlist is public, false the playlist is private, null the playlist status is not relevant.
+	 * The playlist's public/private status: true the playlist is public, false the playlist is private, null if the playlist status is not relevant.
 	 */
 	public public!: APIPlaylist['public'];
 

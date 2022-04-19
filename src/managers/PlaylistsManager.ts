@@ -10,7 +10,7 @@ export class PlaylistsManager extends BaseManager {
 	 * Fetch a playlist using its Spotify ID.
 	 * @param {string} id: The Spotify ID of the playlist.
 	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. If specified, only the content available in this country will be returned, if not, the country of the current user will be used.
-	 * @returns {Promise<Playlist>} The playlist
+	 * @returns {Promise<Playlist>} Playlist object
 	 */
 	public async fetch(id: string, country?: string): Promise<Playlist> {
 		if (!id) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'PlaylistsManager', 'fetch', 'id');

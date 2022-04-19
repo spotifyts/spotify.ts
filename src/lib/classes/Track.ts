@@ -68,7 +68,7 @@ export class Track extends Base {
 	public disc_number!: number;
 
 	/**
-	 * The disc number (usually 1 unless the album consists of more than one disc).
+	 * The track length in milliseconds.
 	 */
 	public duration_ms!: number;
 
