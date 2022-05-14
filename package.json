@@ -39,7 +39,7 @@
 		"@types/prettier": "^2",
 		"@typescript-eslint/eslint-plugin": "^5.23.0",
 		"@typescript-eslint/parser": "^5.23.0",
-		"commitlint": "^16.2.4",
+		"commitlint": "^16.3.0",
 		"dotenv": "^16.0.1",
 		"eslint": "^8.15.0",
 		"eslint-config-prettier": "^8.5.0",
