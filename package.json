@@ -29,7 +29,7 @@
 		"tslib": "^2.4.0"
 	},
 	"devDependencies": {
-		"@commitlint/config-conventional": "^16.2.4",
+		"@commitlint/config-conventional": "^17.0.0",
 		"@sapphire/eslint-config": "^4.3.5",
 		"@sapphire/prettier-config": "^1.4.3",
 		"@sapphire/ts-config": "^3.3.4",
@@ -39,7 +39,7 @@
 		"@types/prettier": "^2",
 		"@typescript-eslint/eslint-plugin": "^5.25.0",
 		"@typescript-eslint/parser": "^5.25.0",
-		"commitlint": "^16.3.0",
+		"commitlint": "^17.0.0",
 		"dotenv": "^16.0.1",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.5.0",
