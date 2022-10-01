@@ -1,4 +1,4 @@
-import { Client, Album, Artist, Category, Episode, Playlist, Show, Track } from '../../src';
+import { Client, Album, Artist, Episode, Playlist, Show, Track } from '../../src';
 
 let client: Client;
 
