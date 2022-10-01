@@ -1,5 +1,7 @@
 export * from './Album';
 export * from './Artist';
+export * from './Audiobook';
+export * from './Audiobook';
 export * from './Category';
 export * from './Episode';
 export * from './Image';
