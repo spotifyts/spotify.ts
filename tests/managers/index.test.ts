@@ -1,11 +1,11 @@
-import { Client, Album, Artist, Category, Episode, Playlist, Show, Track } from '../../src';
+import { Client, Album, Artist, Episode, Playlist, Show, Track } from '../../src';
 
 let client: Client;
 
 beforeAll(async () => {
 	const newClient = new Client({
-		clientId: process.env.CLIENT_ID!,
-		clientSecret: process.env.CLIENT_SECRET!
+		clientId: process.env.VITE_CLIENT_ID!,
+		clientSecret: process.env.VITE_CLIENT_SECRET!
 	});
 	await newClient.start();
 	client = newClient;
@@ -24,11 +24,6 @@ describe('All Manager tests', () => {
 	test('ArtistsManager.fetch returns Artist', async () => {
 		const data = await client.artists.fetch('4gdMJYnopf2nEUcanAwstx');
 		return expect(data).toBeInstanceOf(Artist);
-	});
-
-	test('CategoriesManager.fetch returns Category', async () => {
-		const data = await client.categories.fetch('pop');
-		return expect(data).toBeInstanceOf(Category);
 	});
 
 	test('EpisodesManager.fetch returns Episode', async () => {

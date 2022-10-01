@@ -2,6 +2,7 @@
 	"extends": "@sapphire/ts-config",
 	"compilerOptions": {
 		"target": "ESNext",
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"types": ["vitest/globals"]
 	}
 }
