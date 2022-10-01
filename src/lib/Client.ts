@@ -5,6 +5,7 @@ import { RestManager } from './rest';
 import {
 	AlbumsManager,
 	ArtistsManager,
+	AudiobooksManager,
 	CategoriesManager,
 	EpisodesManager,
 	GeneresManager,
@@ -55,6 +56,12 @@ export class Client {
 	 * @type {ArtistsManager}
 	 */
 	public artists!: ArtistsManager;
+
+	/**
+	 * The manager for handling audiobooks.
+	 * @type {AudiobooksManager}
+	 */
+	public audiobooks!: AudiobooksManager;
 
 	/**
 	 * The manager for handling browsing categories.
@@ -145,6 +152,7 @@ export class Client {
 		this.rest = new RestManager(this);
 		this.albums = new AlbumsManager(this);
 		this.artists = new ArtistsManager(this);
+		this.audiobooks = new AudiobooksManager(this);
 		this.categories = new CategoriesManager(this);
 		this.episodes = new EpisodesManager(this);
 		this.genres = new GeneresManager(this);

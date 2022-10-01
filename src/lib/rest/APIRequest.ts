@@ -61,6 +61,7 @@ export class APIRequest {
 		if (!this.client.options.accessToken) throw new SpotifyTSError('CLIENT_MISSING_ACCESS_TOKEN');
 
 		const options = this.makeOptions();
+		console.log(options);
 		return phin({ ...options }) as Promise<IJSONResponse<unknown>>;
 	}
 
