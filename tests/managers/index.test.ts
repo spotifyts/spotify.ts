@@ -4,8 +4,8 @@ let client: Client;
 
 beforeAll(async () => {
 	const newClient = new Client({
-		clientId: process.env.CLIENT_ID!,
-		clientSecret: process.env.CLIENT_SECRET!
+		clientId: process.env.VITE_CLIENT_ID!,
+		clientSecret: process.env.VITE_CLIENT_SECRET!
 	});
 	await newClient.start();
 	client = newClient;
