@@ -40,7 +40,7 @@ export class TracksManager extends BaseManager {
 		const query = country
 			? new RequestData({ query: { ids: ids.join(','), market: country } })
 			: new RequestData({ query: { ids: ids.join(',') } });
-		const { tracks } = await super.get(undefined, undefined, query);
+		const { tracks } = await super.get<{ tracks: APITrack[] }>(undefined, undefined, query);
 
 		const parsed = [];
 		for (const track of tracks) parsed.push(new Track(this.client, track));

@@ -11,7 +11,7 @@ export class GeneresManager extends BaseManager {
 	 * @returns {Promise<string[]>} Array of strings
 	 */
 	public async fetchAvailableSeeds(): Promise<string[]> {
-		const { genres } = await super.get();
+		const { genres } = await super.get<{ genres: string[] }>();
 		return genres;
 	}
 }

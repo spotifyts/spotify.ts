@@ -11,7 +11,7 @@ export class MarketsManager extends BaseManager {
 	 * @returns {Promise<string[]>} Array of strings
 	 */
 	public async fetchAvailable(): Promise<string[]> {
-		const { markets } = await super.get();
+		const { markets } = await super.get<{ markets: string[] }>();
 		return markets;
 	}
 }
