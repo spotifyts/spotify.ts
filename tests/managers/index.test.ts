@@ -26,11 +26,6 @@ describe('All Manager tests', () => {
 		return expect(data).toBeInstanceOf(Artist);
 	});
 
-	test('CategoriesManager.fetch returns Category', async () => {
-		const data = await client.categories.fetch('pop');
-		return expect(data).toBeInstanceOf(Category);
-	});
-
 	test('EpisodesManager.fetch returns Episode', async () => {
 		const data = await client.episodes.fetch('3ou7K5MaAnebFxp9yXDnjH', 'US');
 		return expect(data).toBeInstanceOf(Episode);
