@@ -3,6 +3,7 @@ export * from './Artist';
 export * from './Audiobook';
 export * from './Audiobook';
 export * from './Category';
+export * from './Chapter';
 export * from './Episode';
 export * from './Image';
 export * from './Playlist';

@@ -1,3 +1,6 @@
 {
-	"extends": "@sapphire/eslint-config"
+	"extends": "@sapphire/eslint-config",
+	"rules": {
+		"spaced-comment": "off"
+	}
 }
