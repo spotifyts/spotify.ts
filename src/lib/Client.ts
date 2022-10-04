@@ -7,6 +7,7 @@ import {
 	ArtistsManager,
 	AudiobooksManager,
 	CategoriesManager,
+	ChaptersManager,
 	EpisodesManager,
 	GeneresManager,
 	MarketsManager,
@@ -68,6 +69,12 @@ export class Client {
 	 * @type {CategoriesManager}
 	 */
 	public categories!: CategoriesManager;
+
+	/**
+	 * The manager for handling chapters.
+	 * @type {ChaptersManager}
+	 */
+	public chapters!: ChaptersManager;
 
 	/**
 	 * The manager for handling episodes.
@@ -154,6 +161,7 @@ export class Client {
 		this.artists = new ArtistsManager(this);
 		this.audiobooks = new AudiobooksManager(this);
 		this.categories = new CategoriesManager(this);
+		this.chapters = new ChaptersManager(this);
 		this.episodes = new EpisodesManager(this);
 		this.genres = new GeneresManager(this);
 		this.markets = new MarketsManager(this);

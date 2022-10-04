@@ -4,6 +4,7 @@ export * from './AlbumsManager';
 export * from './ArtistsManager';
 export * from './AudiobooksManager';
 export * from './CategoriesManager';
+export * from './ChaptersManager';
 export * from './EpisodesManager';
 export * from './GenresManager';
 export * from './MarketsManager';
