@@ -1,4 +1,4 @@
-import { Client, Album, Artist, Episode, Playlist, Show, Track } from '../../src';
+import { Client, Album, Artist, Episode, Playlist, Show, Track, Audiobook } from '../../src';
 
 let client: Client;
 
@@ -62,5 +62,15 @@ describe('All Manager tests', () => {
 	test('TracksManager.fetch returns Track', async () => {
 		const data = await client.tracks.fetch('0NLkVxf0PyxsXBG3EuZcJf');
 		return expect(data).toBeInstanceOf(Track);
+	});
+	
+	test('AudiobooksManager.fetch returns a single Audiobook', async () => {
+		const data = await client.audiobooks.fetch('38bS44xjbVVZ3No3ByF1dJ');
+		return expect(data).toBeInstanceOf(Audiobook);
+	});
+	
+	test('AudiobooksManager.fetch returns a single Audiobook', async () => {
+		const data = await client.audiobooks.fetchSeveral(['7ouMYWpwJ422jRcDASZB7P','4VqPOruhp5EdPBeR92t6lQ','2takcwOaAZWiXQijPHIx7B']);
+		return expect(data).toEqual(expect.arrayContaining([expect.any(Audiobook)]));
 	});
 });
