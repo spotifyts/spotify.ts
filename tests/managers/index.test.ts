@@ -65,12 +65,13 @@ describe('All Manager tests', () => {
 	});
 	
 	test('AudiobooksManager.fetch returns a single Audiobook', async () => {
-		const data = await client.audiobooks.fetch('38bS44xjbVVZ3No3ByF1dJ');
+		// https://open.spotify.com/show/2IEBhnu61ieYGFRPEJIO40
+		const data = await client.audiobooks.fetch('2IEBhnu61ieYGFRPEJIO40');
 		return expect(data).toBeInstanceOf(Audiobook);
 	});
 	
-	test('AudiobooksManager.fetch returns a single Audiobook', async () => {
-		const data = await client.audiobooks.fetchSeveral(['7ouMYWpwJ422jRcDASZB7P','4VqPOruhp5EdPBeR92t6lQ','2takcwOaAZWiXQijPHIx7B']);
+	test('AudiobooksManager.fetchSeveral returns a list of Audiobooks', async () => {
+		const data = await client.audiobooks.fetchSeveral(['2IEBhnu61ieYGFRPEJIO40','0uEpCJqK3X338PiK4IdL0y']);
 		return expect(data).toEqual(expect.arrayContaining([expect.any(Audiobook)]));
 	});
 });
