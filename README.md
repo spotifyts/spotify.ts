@@ -66,3 +66,14 @@ client.start().then(() => {
 -   [Discord Server](https://discord.gg/qchtmGDdFr)
 -   [Github Organization](https://github.com/spotifyts)
 -   [NPM Page](https://npmjs.com/spotify.ts)
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
