@@ -19,6 +19,15 @@
         "maintenance",
         "projectManagement"
       ]
+    },
+    {
+      "login": "prashanthr",
+      "name": "Prashanth Rajaram",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1409501?v=4",
+      "profile": "https://prashanthr.me",
+      "contributions": [
+        "code"
+       ]
     }
   ]
 }
