@@ -1,5 +1,21 @@
 {
-	"projectName": "spotify.ts",
-	"projectOwner": "FC5570",
-	"skipCi": true
+  "projectName": "spotify.ts",
+  "projectOwner": "spotifyts",
+  "skipCi": true,
+  "files": [
+    "README.md"
+  ],
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "prashanthr",
+      "name": "Prashanth Rajaram",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1409501?v=4",
+      "profile": "https://prashanthr.me",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
 }
