@@ -75,6 +75,7 @@ client.start().then(() => {
 <table>
   <tbody>
     <tr>
+      <td align="center"><a href="https://fc5570.me/"><img src="https://avatars.githubusercontent.com/u/68158483?v=4?s=100" width="100px;" alt="FC"/><br /><sub><b>FC</b></sub></a><br /><a href="#code-FC5570" title="Code">💻</a> <a href="#ideas-FC5570" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-FC5570" title="Maintenance">🚧</a> <a href="#projectManagement-FC5570" title="Project Management">📆</a></td>
       <td align="center"><a href="https://prashanthr.me"><img src="https://avatars.githubusercontent.com/u/1409501?v=4?s=100" width="100px;" alt="Prashanth Rajaram"/><br /><sub><b>Prashanth Rajaram</b></sub></a><br /><a href="#code-prashanthr" title="Code">💻</a></td>
     </tr>
   </tbody>
