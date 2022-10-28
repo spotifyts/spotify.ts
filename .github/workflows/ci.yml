@@ -26,6 +26,7 @@ jobs:
         run: yarn lint
 
       - name: Run Tests
+        if: ${{ github.event_name == 'push' }}
         env:
           VITE_CLIENT_ID: '${{ secrets.CLIENT_ID }}'
           VITE_CLIENT_SECRET: '${{ secrets.CLIENT_SECRET }}'
