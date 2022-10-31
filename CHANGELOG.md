@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/spotifyts/spotify.ts/compare/v1.2.0...v1.3.0) (2022-10-31)
+
+### Features
+
+-   **audiobook-tests:** Add audiobook unit tests ([253f28d](https://github.com/spotifyts/spotify.ts/commit/253f28dae4f16b3b50d7492e8504c7a334392127))
+
+### Bug Fixes
+
+-   **deps:** update dependency @discordjs/collection to ^1.2.0 ([013e220](https://github.com/spotifyts/spotify.ts/commit/013e220a213d5e375e716b76a1f00f68d1ae6b2f))
+-   secrets not being passed to tests ([777b932](https://github.com/spotifyts/spotify.ts/commit/777b93269f344e5f9b04bfc1c32eda6108f3b87b))
+
 ## [1.2.0](https://github.com/spotifyts/spotify.ts/compare/v1.1.1...v1.2.0) (2022-10-04)
 
 ### Features
