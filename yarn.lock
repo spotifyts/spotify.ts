@@ -740,10 +740,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:^2.7.3":
-  version: 2.7.3
-  resolution: "@types/prettier@npm:2.7.3"
-  checksum: 705384209cea6d1433ff6c187c80dcc0b95d99d5c5ce21a46a9a58060c527973506822e428789d842761e0280d25e3359300f017fbe77b9755bc772ab3dc2f83
+"@types/prettier@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/prettier@npm:3.0.0"
+  dependencies:
+    prettier: "*"
+  checksum: a2a512d304e5bcf78f38089dc88ad19215e6ab871d435a17aef3ce538a63b07c0e359c18db23989dc1ed9fff96d99eee1f680416080184df5c7e0e3bf767e165
   languageName: node
   linkType: hard
 
@@ -4421,6 +4423,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier@npm:*, prettier@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "prettier@npm:3.2.5"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 2ee4e1417572372afb7a13bb446b34f20f1bf1747db77cf6ccaf57a9be005f2f15c40f903d41a6b79eec3f57fff14d32a20fb6dee1f126da48908926fe43c311
+  languageName: node
+  linkType: hard
+
 "prettier@npm:^2.8.2":
   version: 2.8.2
   resolution: "prettier@npm:2.8.2"
@@ -5020,7 +5031,7 @@ __metadata:
     "@sapphire/ts-config": ^3.3.4
     "@types/eslint": ^8.40.0
     "@types/node": ^18.16.16
-    "@types/prettier": ^2.7.3
+    "@types/prettier": ^3.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.8
     "@typescript-eslint/parser": ^5.59.8
     commitlint: ^17.6.5
@@ -5032,7 +5043,7 @@ __metadata:
     husky: ^8.0.3
     lint-staged: ^13.2.2
     phin: ^3.7.0
-    prettier: ^2.8.8
+    prettier: ^3.2.5
     pretty-quick: ^3.1.3
     standard-version: ^9.5.0
     tslib: ^2.5.2
