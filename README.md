@@ -13,7 +13,7 @@
 - **Fast Performance**
 - **Object-Oriented Design**
 - **Support for TypeScript, ESM, and CJS**
-- **User-Friendly Interface**
+- **Easy to Use**
 
 ## Installation
 
