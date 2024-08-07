@@ -69,7 +69,6 @@ client.start().then(() => {
 
 ## Links
 
-- [Documentation (Coming Soon)](https://github.com/spotifyts/spotify.ts)
 - [Discord Server](https://discord.gg/qchtmGDdFr)
 - [GitHub Organization](https://github.com/spotifyts)
 - [NPM Page](https://npmjs.com/spotify.ts)
