@@ -1,0 +1,15 @@
+{
+	"extends": ["@sapphire/ts-config/base", "@sapphire/ts-config/extra-strict"],
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"rootDir": ".",
+		"outDir": "./dist",
+		"declarationDir": "./dist/types",
+		"tsBuildInfoFile": "dist/.tsbuildinfo",
+		"incremental": true,
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true
+	},
+	"include": ["tests/**/*.ts"],
+	"exclude": ["src/**/*.d.ts"]
+}

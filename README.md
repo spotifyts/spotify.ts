@@ -1,77 +1,71 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/spotifyts/assets/main/svg/full-nobg.svg" alt="spotify.ts logo">
+<img src="https://raw.githubusercontent.com/spotifyts/assets/main/svg/full-nobg.svg">
 
-  # spotify.ts
+# spotify.ts
+
 </div>
 
 ## About
 
-`spotify.ts` is a TypeScript wrapper for Spotify's Web API, designed to make interacting with Spotify's services easy and efficient.
+spotify.ts is an wrapper built around Spotify's Web API.
 
 ## Features
 
-- **Fast Performance**
-- **Object-Oriented Design**
-- **Support for TypeScript, ESM, and CJS**
-- **Easy to Use**
+-   Fast
+-   Object Oriented
+-   Typescript, ESM, CJS support
+-   Easy to Use
 
-## Installation
-
-You can install `spotify.ts` using one of the following package managers:
+## Installing
 
 ```bash
-npm install spotify.ts
-```
-
-```bash
+npm i spotify.ts
 yarn add spotify.ts
-```
-
-```bash
 pnpm add spotify.ts
 ```
 
 ## Usage
 
-To get started, import the `Client` class from the library and create a new instance with your `clientId` and `clientSecret`. You can then use the various managers to interact with the Spotify API. For more detailed instructions, visit the documentation site (link coming soon).
+First, import `Client` from the library, then instantiate a a new client with the `clientId` and `clientSecret` credentials. Then you can use the managers to make API calls to the Spotify API. For an in-built guide, visit the documentation site (see below).
 
-### Examples
+### Examples:
 
-**Fetch an Album:**
+Fetch an album:
 
 ```typescript
 import { Client } from 'spotify.ts';
 
 const client = new Client({
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret'
+	clientId: 'some-id',
+	clientSecret: 'some-secret'
 });
 
 client.start().then(() => {
-  client.albums.fetch('0NLkVxf0PyxsXBG3EuZcJf').then(console.log);
+	client.albums.fetch('0NLkVxf0PyxsXBG3EuZcJf').then(console.log);
 });
 ```
 
-**Fetch an Artist:**
+Fetch an artist:
 
 ```typescript
 import { Client } from 'spotify.ts';
 
 const client = new Client({
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret'
+	clientId: 'some-id',
+	clientSecret: 'some-secret'
 });
 
 client.start().then(() => {
-  client.artists.fetch('4gdMJYnopf2nEUcanAwstx').then(console.log);
+	client.artists.fetch('4gdMJYnopf2nEUcanAwstx').then(console.log);
 });
 ```
 
 ## Links
 
-- [Discord Server](https://discord.gg/qchtmGDdFr)
-- [GitHub Organization](https://github.com/spotifyts)
-- [NPM Page](https://npmjs.com/spotify.ts)
+-   Documentation (Coming Soon)
+-   [Discord Server](https://discord.gg/qchtmGDdFr)
+-   [Github Organization](https://github.com/spotifyts)
+-   [NPM Page](https://npmjs.com/spotify.ts)
 
 ## Contributors
 
@@ -86,6 +80,14 @@ client.start().then(() => {
     </tr>
   </tbody>
 </table>
+<<<<<<< HEAD
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+=======
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+> > > > > > > 6c90395 (chore: revamp project structure, begin updates)
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

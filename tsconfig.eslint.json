@@ -1,8 +1,5 @@
 {
-	"extends": "./tsconfig.base.json",
-	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true
-	},
-	"include": ["src", "tests", "vitest.config.ts"]
+	"extends": "./tsconfig.json",
+	"include": [".eslintrc.json", "tests/**/*.ts", "./src/**/*", "vitest.config.mts", "tsup.config.ts"],
+	"exclude": ["dist", "docs", "coverage"]
 }

@@ -1,70 +1,70 @@
 {
-	"name": "spotify.ts",
-	"version": "1.3.0",
-	"description": "An easy to use, object oriented API wrapper for the Spotify Web API.",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"repository": "https://github.com/spotifyts/spotify.ts",
-	"author": "FC5570",
-	"license": "MIT",
-	"exports": {
-		".": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.js"
-		}
-	},
-	"scripts": {
-		"build": "yarn tsc -b src && yarn gen-esm",
-		"format": "yarn prettier --write {src,tests}/**/*.ts",
-		"test": "yarn vitest",
-		"prepublishOnly": "yarn build && yarn format",
-		"lint": "yarn eslint src tests --ext ts --fix",
-		"gen-esm": "yarn gen-esm-wrapper dist/index.js dist/index.mjs",
-		"prepare": "yarn husky install"
-	},
-	"dependencies": {
-		"@discordjs/collection": "^1.5.1",
-		"@sapphire/async-queue": "^1.5.0",
-		"phin": "^3.7.0",
-		"tslib": "^2.5.2",
-		"vitest": "^0.31.4"
-	},
-	"devDependencies": {
-		"@commitlint/config-conventional": "^17.6.5",
-		"@sapphire/eslint-config": "^4.4.2",
-		"@sapphire/prettier-config": "^1.4.5",
-		"@sapphire/ts-config": "^3.3.4",
-		"@types/eslint": "^8.40.0",
-		"@types/node": "^18.16.16",
-		"@types/prettier": "^2.7.3",
-		"@typescript-eslint/eslint-plugin": "^5.59.8",
-		"@typescript-eslint/parser": "^5.59.8",
-		"commitlint": "^17.6.5",
-		"dotenv": "^16.1.3",
-		"eslint": "^8.41.0",
-		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"gen-esm-wrapper": "^1.1.3",
-		"husky": "^8.0.3",
-		"lint-staged": "^13.2.2",
-		"prettier": "^2.8.8",
-		"pretty-quick": "^3.1.3",
-		"standard-version": "^9.5.0",
-		"typedoc": "^0.24.7",
-		"typescript": "^4.9.5"
-	},
-	"packageManager": "yarn@3.5.1",
-	"prettier": "@sapphire/prettier-config",
-	"files": [
-		"dist/",
-		"!dist.tsconfig.tsbuildinfo"
-	],
-	"commitlint": {
-		"extends": [
-			"@commitlint/config-conventional"
-		]
-	},
-	"lint-staged": {
-		"*.ts": "yarn eslint --fix"
-	}
+  "name": "spotify.ts",
+  "version": "1.3.0",
+  "description": "An easy to use, object oriented API wrapper for the Spotify Web API.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/cjs/index.d.ts",
+  "repository": "https://github.com/spotifyts/spotify.ts",
+  "author": "FC5570",
+  "license": "MIT",
+  "exports": {
+    "require": {
+      "default": "./dist/cjs/index.js",
+      "types": "./dist/cjs/index.d.ts"
+    },
+    "import": {
+      "default": "./dist/esm/index.mjs",
+      "types": "./dist/esm/index.d.mts"
+    }
+  },
+  "scripts": {
+    "build": "yarn tsup",
+    "format": "yarn prettier --write",
+    "lint": "yarn eslint . --fix",
+    "test": "yarn vitest",
+    "coverage": "yarn test --coverage",
+    "prepublishOnly": "yarn build",
+    "prepare": "yarn husky install",
+    "bump": "yarn cliff-jumper",
+    "release": "git push && git push --tags && npm publish"
+  },
+  "dependencies": {
+    "@sapphire/async-queue": "^1.5.3"
+  },
+  "files": [
+    "dist/",
+    "CHANGELOG.md",
+    "README.md",
+    "!dist.tsconfig.tsbuildinfo"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.ts": "yarn lint"
+  },
+  "prettier": "@sapphire/prettier-config",
+  "packageManager": "yarn@4.5.0",
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@favware/cliff-jumper": "^4.1.0",
+    "@sapphire/eslint-config": "^5.0.5",
+    "@sapphire/prettier-config": "^2.0.0",
+    "@sapphire/ts-config": "^5.0.1",
+    "@types/node": "^22.7.4",
+    "esbuild-plugin-file-path-extensions": "^2.1.3",
+    "eslint": "^8.57.1",
+    "git-cliff": "^2.6.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.0",
+    "typedoc": "^0.26.7",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  }
 }

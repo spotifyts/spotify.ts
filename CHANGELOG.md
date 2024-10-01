@@ -10,7 +10,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
--   **deps:** update dependency @discordjs/collection to ^1.2.0 ([013e220](https://github.com/spotifyts/spotify.ts/commit/013e220a213d5e375e716b76a1f00f68d1ae6b2f))
 -   secrets not being passed to tests ([777b932](https://github.com/spotifyts/spotify.ts/commit/777b93269f344e5f9b04bfc1c32eda6108f3b87b))
 
 ## [1.2.0](https://github.com/spotifyts/spotify.ts/compare/v1.1.1...v1.2.0) (2022-10-04)
