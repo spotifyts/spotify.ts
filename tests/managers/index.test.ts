@@ -1,3 +1,4 @@
+import { beforeAll, afterAll, describe, test, expect } from 'vitest';
 import { Client, Album, Artist, Episode, Playlist, Show, Track, Audiobook } from '../../src';
 
 let client: Client;

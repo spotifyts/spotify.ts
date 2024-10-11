@@ -2,17 +2,12 @@
 	"name": "spotify.ts",
 	"out": "./docs/",
 	"readme": "./README.md",
-	"tsconfig": "./src/tsconfig.json",
+	"tsconfig": "./tsconfig.json",
 	"cleanOutputDir": true,
-	"emit": true,
+	"emit": "both",
 	"entryPoints": ["src/index.ts"],
 	"excludeExternals": false,
 	"hideGenerator": true,
 	"lightHighlightTheme": "github-light",
-	"darkHighlightTheme": "dracula",
-	"markedOptions": {
-		"gfm": true,
-		"mangle": false,
-		"smartypants": true
-	}
+	"darkHighlightTheme": "dracula"
 }

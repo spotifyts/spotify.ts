@@ -11,7 +11,7 @@ const defaultOptions: Options = {
 	keepNames: true,
 	target: 'es2022',
 	dts: true,
-	entry: ['./src', '!./src/tests/', '!./src/lib/typings', '!./src/**/*.d.ts']
+	entry: ['./src', '!./src/lib/typings', '!./src/**/*.d.ts']
 };
 
 export default defineConfig([
