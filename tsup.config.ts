@@ -5,12 +5,12 @@ const defaultOptions: Options = {
 	clean: true,
 	sourcemap: true,
 	skipNodeModulesBundle: true,
-	bundle: true,
+	bundle: false,
 	splitting: false,
 	shims: true,
 	keepNames: true,
 	target: 'es2022',
-	dts: true,
+	dts: false,
 	entry: ['./src', '!./src/lib/typings', '!./src/**/*.d.ts']
 };
 
