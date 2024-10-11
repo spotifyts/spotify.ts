@@ -82,7 +82,7 @@ export class TracksManager extends BaseManager {
 	 * @param {string} id: The ID of the track.
 	 * @returns {Promise<AudioAnalysis>} The audio analysis of the track.
 	 */
-	public async getAudioAnalysis(id: string): Promise<AudioAnalysis> {
+	public getAudioAnalysis(id: string): Promise<AudioAnalysis> {
 		if (!id) throw new SpotifyTSError('MANAGER_MISSING_ARGUMENT', 'TracksManager', 'getAudioAnalysis', 'id');
 		if (typeof id !== 'string') throw new SpotifyTSError('MANAGER_ARGUMENT_INVALID_TYPE', 'TracksManager', 'getAudioAnalysis', 'id', 'string');
 

@@ -1,7 +1,8 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/spotifyts/assets/main/svg/full-nobg.svg" alt="spotify.ts logo">
 
-  # spotify.ts
+# spotify.ts
+
 </div>
 
 ## About
@@ -10,10 +11,10 @@
 
 ## Features
 
-- **Fast Performance**
-- **Object-Oriented Design**
-- **Support for TypeScript, ESM, and CJS**
-- **Easy to Use**
+-   **Fast Performance**
+-   **Object-Oriented Design**
+-   **Support for TypeScript, ESM, and CJS**
+-   **Easy to Use**
 
 ## Installation
 
@@ -43,12 +44,12 @@ To get started, import the `Client` class from the library and create a new inst
 import { Client } from 'spotify.ts';
 
 const client = new Client({
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret'
+	clientId: 'your-client-id',
+	clientSecret: 'your-client-secret'
 });
 
 client.start().then(() => {
-  client.albums.fetch('0NLkVxf0PyxsXBG3EuZcJf').then(console.log);
+	client.albums.fetch('0NLkVxf0PyxsXBG3EuZcJf').then(console.log);
 });
 ```
 
@@ -58,20 +59,20 @@ client.start().then(() => {
 import { Client } from 'spotify.ts';
 
 const client = new Client({
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret'
+	clientId: 'your-client-id',
+	clientSecret: 'your-client-secret'
 });
 
 client.start().then(() => {
-  client.artists.fetch('4gdMJYnopf2nEUcanAwstx').then(console.log);
+	client.artists.fetch('4gdMJYnopf2nEUcanAwstx').then(console.log);
 });
 ```
 
 ## Links
 
-- [Discord Server](https://discord.gg/qchtmGDdFr)
-- [GitHub Organization](https://github.com/spotifyts)
-- [NPM Page](https://npmjs.com/spotify.ts)
+-   [Discord Server](https://discord.gg/qchtmGDdFr)
+-   [GitHub Organization](https://github.com/spotifyts)
+-   [NPM Page](https://npmjs.com/spotify.ts)
 
 ## Contributors
 

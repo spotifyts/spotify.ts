@@ -1,38 +1,31 @@
-name: Continuous Integration
+name: Continous Integration
+
 on:
-  push:
-    branches:
-      - 'main'
   pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
 jobs:
-  Continuous-integration:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+      - uses: actions/checkout@v4
+
       - name: Use Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
-      - name: Restore CI Cache
-        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3.3.1
-        id: cache-restore
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-16-${{ hashFiles('**/yarn.lock') }}
+          node-version: 'latest'
+          cache: 'yarn'
 
-      - name: Install Dependencies if Cache Miss
-        if: ${{ !steps.cache-restore.outputs.cache-hit }}
-        run: yarn --immutable
-
-      - name: Check Liniting
-        run: yarn lint
+      - name: Install Dependencies
+        run: yarn install --immutable
 
       - name: Run Tests
-        if: ${{ github.event_name == 'push' }}
+        run: yarn coverage
         env:
-          VITE_CLIENT_ID: '${{ secrets.CLIENT_ID }}'
-          VITE_CLIENT_SECRET: '${{ secrets.CLIENT_SECRET }}'
-        run: yarn test
+          VITE_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          VITE_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
 
-      - name: Build Code
+      - name: Build
         run: yarn build

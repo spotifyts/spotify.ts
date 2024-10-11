@@ -1,3 +1,4 @@
+import { beforeAll, afterAll, describe, test, expect } from 'vitest';
 import { Client, Track } from '../../src';
 
 let client: Client;

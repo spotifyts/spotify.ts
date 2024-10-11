@@ -4,3 +4,4 @@ docs/
 *.gz
 .env*
 tests/index.ts
+.yarn/cache
