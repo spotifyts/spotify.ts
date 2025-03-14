@@ -1,5 +1,5 @@
 import { beforeAll, afterAll, describe, test, expect } from 'vitest';
-import { Client, Album, Artist, Episode, Playlist, Show, Track, Audiobook } from '../../src';
+import { Client, Album, Artist, Episode, Playlist, Show, Track, Audiobook, Chapter } from '../../src';
 
 let client: Client;
 
@@ -73,5 +73,15 @@ describe('All Manager tests', () => {
 	test('AudiobooksManager.fetchSeveral returns a list of Audiobooks', async () => {
 		const data = await client.audiobooks.fetchSeveral(['2IEBhnu61ieYGFRPEJIO40', '0uEpCJqK3X338PiK4IdL0y']);
 		return expect(data).toEqual(expect.arrayContaining([expect.any(Audiobook)]));
+	});
+
+	test('ChaptersManager.fetch returns Chapter', async () => {
+		const data = await client.chapters.fetch('');
+		return expect(data).toBeInstanceOf(Chapter);
+	});
+
+	test('ChaptersManager.fetchSeveral returns a list of Chapters', async () => {
+		const data = await client.chapters.fetchSeveral(['', '']);
+		return expect(data).toEqual(expect.arrayContaining([expect.any(Chapter)]));
 	});
 });
