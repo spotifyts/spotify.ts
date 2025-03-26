@@ -3,5 +3,5 @@ dist/
 docs/
 *.gz
 .env*
-tests/index.ts
+src/tests/index.ts
 .yarn/cache

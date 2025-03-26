@@ -1,4 +1,4 @@
-import { RequestData, RequestMethods, type Client } from '../lib';
+import { RequestMethods, type Client } from '..';
 
 export class BaseManager {
 	/**
@@ -21,7 +21,7 @@ export class BaseManager {
 	 * @param {string} [path]: The path (if any) to append to the request URL.
 	 * @param {RequestData<unknown, unknown>} [data]: Any extended data, such as query and body.
 	 */
-	protected get<T>(route?: string, path?: string, data?: RequestData<unknown, unknown>) {
-		return this.client.rest.request<T>(RequestMethods.Get, route ?? this.route, path, data);
+	protected get<T>(route?: string | null, path?: string | null, data?: RequestInit) {
+		return this.client.rest.execute<T>(RequestMethods.Get, route ?? this.route, path, data);
 	}
 }

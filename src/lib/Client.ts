@@ -1,7 +1,7 @@
 import { getAccessToken } from './util/util';
 import { SpotifyTSError } from './errors';
 
-import { RestManager } from './rest';
+import { RequestManager } from './rest';
 import {
 	AlbumsManager,
 	ArtistsManager,
@@ -9,13 +9,12 @@ import {
 	CategoriesManager,
 	ChaptersManager,
 	EpisodesManager,
-	GeneresManager,
 	MarketsManager,
 	PlaylistsManager,
 	SearchManager,
 	ShowsManager,
 	TracksManager
-} from '../managers';
+} from './managers';
 
 export interface ClientOptions {
 	/**
@@ -44,7 +43,7 @@ export class Client {
 	 * The rest manager used to make requests to the API.
 	 * @type {RestManager}
 	 */
-	public rest!: RestManager;
+	public rest!: RequestManager;
 
 	/**
 	 * The manager for handling albums.
@@ -81,12 +80,6 @@ export class Client {
 	 * @type {EpisodesManager}
 	 */
 	public episodes!: EpisodesManager;
-
-	/**
-	 * The manager for handling genres.
-	 * @type {GeneresManager}
-	 */
-	public genres!: GeneresManager;
 
 	/**
 	 * The manager for handling markets.
@@ -135,7 +128,6 @@ export class Client {
 
 	/**
 	 * Generates (and keeps generating a new token every hour or so) an Oauth token used for making requests to the Spotify API. It is necessary to call this method before using any managers.
-	 * @returns {Promise<Client>} The instantiated client.
 	 */
 	public async start(): Promise<this> {
 		const { expiresIn } = await getAccessToken(this);
@@ -156,14 +148,13 @@ export class Client {
 	}
 
 	private registerManagers() {
-		this.rest = new RestManager(this);
+		this.rest = new RequestManager(this);
 		this.albums = new AlbumsManager(this);
 		this.artists = new ArtistsManager(this);
 		this.audiobooks = new AudiobooksManager(this);
 		this.categories = new CategoriesManager(this);
 		this.chapters = new ChaptersManager(this);
 		this.episodes = new EpisodesManager(this);
-		this.genres = new GeneresManager(this);
 		this.markets = new MarketsManager(this);
 		this.playlists = new PlaylistsManager(this);
 		this.searches = new SearchManager(this);

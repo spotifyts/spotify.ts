@@ -1,4 +1,4 @@
-import { Base } from '.';
+import { Base } from './';
 import type { Client } from '../';
 import type { APIChapter } from '../types';
 

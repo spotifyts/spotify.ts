@@ -1,8 +1,8 @@
-import { Base } from '.';
-import type { Client } from '../';
-import type { APIAlbum } from '../types';
+import { Base } from './';
+import type { Client } from '../Client';
+import type { APIAlbum, APISimplifiedAlbum } from '../types/classes/Album';
 
-export class Album extends Base {
+export class Album<S = false> extends Base {
 	/**
 	 * The Spotify ID of the album.
 	 */
@@ -19,6 +19,16 @@ export class Album extends Base {
 	public uri!: string;
 
 	/**
+	 * The label associated with the album.
+	 */
+	public label!: S extends true ? null : string;
+
+	/**
+	 * The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.
+	 */
+	public popularity!: S extends true ? null : number;
+
+	/**
 	 * The type of the album.
 	 */
 	public album_type!: APIAlbum['album_type'];
@@ -26,17 +36,27 @@ export class Album extends Base {
 	/**
 	 * The number of tracks in the album.
 	 */
-	public total_tracks!: number;
+	public total_tracks!: S extends true ? null : number;
 
 	/**
-	 * The markets in which the album is available: ISO 3166-1 alpha-2 country codes. NOTE: an album is considered available in a market when at least 1 of its tracks is available in that market.
+	 * The markets in which the album is available: ISO 3166-1 alpha-2 market codes. NOTE: an album is considered available in a market when at least 1 of its tracks is available in that market.
 	 */
 	public available_markets!: string[];
 
 	/**
+	 * The copyright statements of the album.
+	 */
+	public copyrights!: S extends true ? null : APIAlbum['copyrights'];
+
+	/**
+	 * Known external IDs for the album.
+	 */
+	public external_ids!: S extends true ? null : APIAlbum['external_ids'];
+
+	/**
 	 * Known external URLs for this album.
 	 */
-	public external_urls!: APIAlbum['external_ids'];
+	public external_urls!: APIAlbum['external_urls'];
 
 	/**
 	 * A link to the Web API endpoint providing full details of the album
@@ -71,9 +91,15 @@ export class Album extends Base {
 	/**
 	 * The tracks of the album.
 	 */
-	public tracks!: APIAlbum['tracks'];
+	public tracks!: S extends true ? null : APIAlbum['tracks'];
 
-	public constructor(client: Client, data: APIAlbum) {
+	/**
+	 * This field describes the relationship between the artist and the album.
+	 * This field is only available when album is fetched through an artist or other similar entity.
+	 */
+	public album_group!: S extends true ? APISimplifiedAlbum['album_group'] : null;
+
+	public constructor(client: Client, data: S extends true ? APISimplifiedAlbum : APIAlbum) {
 		super(client);
 		Object.assign(this, data);
 	}
@@ -81,10 +107,10 @@ export class Album extends Base {
 	/**
 	 * Get this album's tracks.
 	 * @param {number} [limit]: The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. Supply this parameter to limit the response to one particular geographical market.
+	 * @param {string} [market]: An ISO 3166-1 alpha-2 market code. Supply this parameter to limit the response to one particular geographical market.
 	 * @param {number} [offset]: The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
 	 */
-	public getTracks(limit?: number, country?: string, offset?: number) {
-		return this.client.albums.getTracks(this.id, limit, country, offset);
+	public getTracks(limit?: number, market?: string, offset?: number) {
+		return this.client.albums.getTracks(this.id, limit, market, offset);
 	}
 }

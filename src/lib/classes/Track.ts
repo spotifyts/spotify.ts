@@ -1,7 +1,7 @@
-import { Base } from '.';
-import type { APITrack, Client } from '..';
+import { Base } from './';
+import type { APITrack, Client } from '../';
 
-export class Track extends Base {
+export class Track<S = false> extends Base {
 	/**
 	 * The Spotify ID for the track.
 	 */
@@ -45,7 +45,7 @@ export class Track extends Base {
 	/**
 	 * Known external IDs for the track.
 	 */
-	public external_ids!: APITrack['external_ids'];
+	public external_ids!: S extends true ? null : APITrack['external_ids'];
 
 	/**
 	 * The album on which the track appears

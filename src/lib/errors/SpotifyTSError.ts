@@ -28,8 +28,8 @@ export class SpotifyTSError extends Error {
 
 /**
  * Registers the error message.
- * @param {string} key: The key/name of the error.
- * @param {string | ErrorMessageSupplier} message: The message of the error.
+ * @param {string} key The key/name of the error.
+ * @param {string | ErrorMessageSupplier} value The message of the error.
  */
 export function register(key: string, value: string | ErrorMessageSupplier) {
 	messages.set(key, value);

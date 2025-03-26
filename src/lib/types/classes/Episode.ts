@@ -1,4 +1,5 @@
-import type { APIImage, APIShow } from '.';
+import type { APIImage, APISimplifiedShow } from './';
+import type { APIObjects } from '../other';
 
 export interface APIEpisode {
 	id: string;
@@ -6,7 +7,7 @@ export interface APIEpisode {
 	description: string;
 	html_description: string;
 	release_date: string;
-	release_date_precision: 'day' | 'month' | 'year';
+	release_date_precision: APIObjects['release_date_precision'];
 	href: string;
 	uri: string;
 	audio_preview_url: string | null;
@@ -15,10 +16,10 @@ export interface APIEpisode {
 	explicit: boolean;
 	is_externally_hosted: boolean;
 	is_playable: boolean;
-	external_urls: { spotify: string };
+	external_urls: APIObjects['external_urls'];
 	images: APIImage[];
-	restrictions: {
-		reason: 'market' | 'product' | 'explicit';
-	};
-	show: APIShow;
+	restrictions: APIObjects['restrictions'];
+	show: APISimplifiedShow;
 }
+
+export interface APISimplifiedEpisode extends Omit<APIEpisode, 'show'> {}

@@ -19,14 +19,16 @@ export class SpotifyAPIError extends Error {
 	/**
 	 * The error identifier.
 	 */
-	public error?: string;
+	public error?: string | null;
 
-	public constructor(message: string, code: number, error_identifier?: string) {
+	public constructor(message: string, code: number, error_identifier?: string | null, statusText?: string | null) {
 		super(message);
 
-		this.message = message;
+		this.message = message ?? 'An error occured';
 		this.code = code;
 
 		if (error_identifier) this.error = error_identifier;
+
+		this.error = statusText;
 	}
 }

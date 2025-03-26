@@ -1,7 +1,7 @@
-import { Base } from '.';
-import type { Client, APIPlaylist } from '..';
+import { Base } from './';
+import type { Client, APIPlaylist, APISimplifiedPlaylist } from '../';
 
-export class Playlist extends Base {
+export class Playlist<S = false> extends Base {
 	/**
 	 * The Spotify ID of the playlist
 	 */
@@ -50,7 +50,7 @@ export class Playlist extends Base {
 	/**
 	 * Information about the followers of the playlist.
 	 */
-	public followers!: APIPlaylist['followers'];
+	public followers!: S extends true ? null : APIPlaylist['followers'];
 
 	/**
 	 * Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. *Note: If returned, the source URL for the image (url) is temporary and will expire in less than a day.*
@@ -60,14 +60,14 @@ export class Playlist extends Base {
 	/**
 	 * The tracks of the playlist.
 	 */
-	public tracks!: APIPlaylist['tracks'];
+	public tracks!: S extends true ? APISimplifiedPlaylist['tracks'] : APIPlaylist['tracks'];
 
 	/**
 	 * The user who owns the playlist.
 	 */
 	public owner!: APIPlaylist['owner'];
 
-	public constructor(client: Client, data: APIPlaylist) {
+	public constructor(client: Client, data: S extends true ? APISimplifiedPlaylist : APIPlaylist) {
 		super(client);
 		Object.assign(this, data);
 	}

@@ -1,5 +1,5 @@
-import { Base } from '.';
-import type { Client } from '..';
+import { Base } from './';
+import type { Client } from '../';
 import type { APIArtist } from '../types';
 
 export class Artist extends Base {
@@ -55,20 +55,21 @@ export class Artist extends Base {
 
 	/**
 	 * Get the albums of this artist.
+	 * @param {string} [include_groups] A comma-separated list of keywords that will be used to filter the response. If not supplied, all album types will be returned.
 	 * @param {number} [limit]: The number of albums to return. Minimum: 1, Maximum: 50, defaults to 50.
-	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code. If a country code is specified, only content that is available in that country will be returned, if not, the country of the user is used.
+	 * @param {string} [market]: An ISO 3166-1 alpha-2 market code. If a market code is specified, only content that is available in that market will be returned, if not, the market of the user is used.
 	 * @param {number} [offset]: The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
 	 */
-	public async getAlbums(limit?: number, country?: string, offset?: number) {
-		return this.client.artists.getAlbums(this.id, limit, country, offset);
+	public async getAlbums(include_groups: 'album' | 'single' | 'appears_on' | 'compilation', limit?: number, market?: string, offset?: number) {
+		return this.client.artists.getAlbums(this.id, include_groups, limit, market, offset);
 	}
 
 	/**
 	 * Get the top tracks of this artist.
-	 * @param {string} country: An ISO 3166-1 alpha-2 country code. If a country code is specified, only content that is available in that country will be returned, if not, the country of the user is used.
+	 * @param {string} market: An ISO 3166-1 alpha-2 market code. If a market code is specified, only content that is available in that market will be returned, if not, the market of the user is used.
 	 */
-	public async getTopTracks(country: string) {
-		return this.client.artists.getTopTracks(this.id, country);
+	public async getTopTracks(market: string) {
+		return this.client.artists.getTopTracks(this.id, market);
 	}
 
 	/**

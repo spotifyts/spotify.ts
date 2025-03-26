@@ -1,8 +1,8 @@
-import { Base } from '.';
+import { Base } from './';
 import type { Client } from '../';
-import type { APIAudiobook } from '../types';
+import type { APIAudiobook, APISimplifiedAudiobook } from '../types';
 
-export class Audiobook extends Base {
+export class Audiobook<S = false> extends Base {
 	/**
 	 * The Spotify ID for the audiobook.
 	 */
@@ -24,6 +24,11 @@ export class Audiobook extends Base {
 	public html_description!: string;
 
 	/**
+	 * The edition of the audiobook.
+	 */
+	public edition!: string;
+
+	/**
 	 * A link to the Web API endpoint providing full details of the audiobook.
 	 */
 	public href!: string;
@@ -32,6 +37,11 @@ export class Audiobook extends Base {
 	 * Whether or not the audiobook has explicit content (true = yes it does; false = no it does not OR unknown).
 	 */
 	public explicit!: boolean;
+
+	/**
+	 * A list of the countries in which the audiobook can be played, identified by their ISO 3166-1 alpha-2 code.
+	 */
+	public available_markets!: string;
 
 	/**
 	 * The author(s) for the audiobook.
@@ -79,7 +89,7 @@ export class Audiobook extends Base {
 	public type!: 'audiobook';
 
 	/**
-	 * The object type.
+	 * The Spotify URI for the audibook.
 	 */
 	public uri!: string;
 
@@ -91,9 +101,12 @@ export class Audiobook extends Base {
 	/**
 	 * The chapters of the audiobook.
 	 */
-	public chapters!: APIAudiobook['chapters'];
+	public chapters!: S extends true ? null : APIAudiobook['chapters']['items'];
 
-	public constructor(client: Client, data: APIAudiobook) {
+	public constructor(
+		client: Client,
+		data: S extends true ? APISimplifiedAudiobook : Omit<APIAudiobook, 'chapters'> | { chapters: APIAudiobook['chapters']['items'] }
+	) {
 		super(client);
 		Object.assign(this, data);
 	}

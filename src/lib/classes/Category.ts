@@ -1,4 +1,4 @@
-import { Base } from '.';
+import { Base } from './';
 import type { Client, APICategory } from '../';
 
 export class Category extends Base {

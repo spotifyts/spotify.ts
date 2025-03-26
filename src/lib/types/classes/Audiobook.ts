@@ -1,39 +1,32 @@
-import type { APIImage } from '.';
+import type { APIImage, APISimplifiedChapter } from './';
+import type { APIObjects } from '../other';
 
 export interface APIAudiobook {
 	id: string;
 	name: string;
 	description: string;
 	html_description: string;
+	edition: string;
 	href: string;
 	explicit: boolean;
-	authors: {
-		name: string;
-	}[];
+	available_markets: string[];
 	languages: string[];
 	media_type: string;
 	images: APIImage[];
-	external_urls: {
-		spotify: string;
-	};
+	external_urls: APIObjects['external_urls'];
+	authors: {
+		name: string;
+	}[];
 	narrators: {
 		name: string;
-	};
-	copyrights: {
-		text: string;
-		type: 'C' | 'P';
 	}[];
+	copyrights: APIObjects['copyrights'];
 	publisher: string;
-	type: 'audiobook';
 	uri: string;
 	total_chapters: number;
 	chapters: {
-		href: string;
-		items: Record<string, unknown>;
-		limit: number;
-		next: string;
-		offset: number;
-		previous: string;
-		total: number;
+		items: APISimplifiedChapter[];
 	};
 }
+
+export interface APISimplifiedAudiobook extends Omit<APIAudiobook, 'chapters'> {}
