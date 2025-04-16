@@ -1,5 +1,8 @@
-import { BaseManager } from '.';
-import { Chapter, SpotifyTSError, type Client, type APIChapter } from '..';
+import { BaseManager } from './BaseManager';
+import { Chapter } from '../classes/Chapter';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import type { APIChapter } from '../types';
 
 export class ChaptersManager extends BaseManager {
 	public constructor(client: Client) {

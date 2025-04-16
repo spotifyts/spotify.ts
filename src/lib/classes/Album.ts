@@ -1,6 +1,6 @@
-import { Base } from './';
+import { Base } from './Base';
 import type { Client } from '../Client';
-import type { APIAlbum, APISimplifiedAlbum } from '../types/classes/Album';
+import type { APIAlbum, APISimplifiedAlbum } from '../types';
 
 export class Album<S = false> extends Base {
 	/**

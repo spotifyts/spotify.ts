@@ -1,5 +1,6 @@
-import { Base } from './';
-import type { APIShow, APISimplifiedShow, Client } from '../';
+import { Base } from './Base';
+import { Client } from '../Client';
+import type { APIShow, APISimplifiedShow } from '../types';
 
 export class Show<S = false> extends Base {
 	/**

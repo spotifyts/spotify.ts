@@ -1,5 +1,8 @@
-import { BaseManager } from './';
-import { Track, SpotifyTSError, type Client, type APITrack } from '../';
+import { BaseManager } from './BaseManager';
+import { Track } from '../classes';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import type { APITrack } from '../types';
 
 export class TracksManager extends BaseManager {
 	public constructor(client: Client) {

@@ -1,4 +1,6 @@
-import { SpotifyTSError, baseApiUrl, type Client, type RequestMethodTypes } from '../';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import { baseApiUrl, type RequestMethodTypes } from '../Constants';
 
 export class APIRequest {
 	/**

@@ -1,5 +1,7 @@
 import { URLSearchParams } from 'node:url';
-import { RequestMethods, SpotifyAPIError, type Client } from '../';
+import { SpotifyAPIError } from '../errors/SpotifyAPIError';
+import { RequestMethods } from '../Constants';
+import type { Client } from '../Client';
 
 export async function getAccessToken(client: Client) {
 	const { clientId, clientSecret } = client.options;

@@ -1,6 +1,6 @@
 import { describe, expect } from 'vitest';
 import { test } from '../test';
-import { Track } from '../../lib';
+import { Track } from '../../lib/classes/Track';
 
 describe('All Classes tests', () => {
 	test('Album.getTracks returns array of Album', async ({ client }) => {

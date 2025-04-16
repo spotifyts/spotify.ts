@@ -1,5 +1,6 @@
-import { Base } from './';
-import type { Client, APIPlaylist, APISimplifiedPlaylist } from '../';
+import { Base } from './Base';
+import { Client } from '../Client';
+import type { APIPlaylist, APISimplifiedPlaylist } from '../types';
 
 export class Playlist<S = false> extends Base {
 	/**

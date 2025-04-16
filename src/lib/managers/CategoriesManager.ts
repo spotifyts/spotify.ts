@@ -1,5 +1,8 @@
-import { BaseManager } from '.';
-import { APICategory, Category, SpotifyTSError, type Client, type FetchSeveralOptions } from '../../';
+import { BaseManager } from './BaseManager';
+import { Category } from '../classes/Category';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import type { APICategory, FetchSeveralOptions } from '../types';
 
 export class CategoriesManager extends BaseManager {
 	public constructor(client: Client) {

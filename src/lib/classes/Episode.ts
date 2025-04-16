@@ -1,5 +1,6 @@
-import { Base } from './';
-import type { APIEpisode, APISimplifiedEpisode, Client } from '../';
+import { Base } from './Base';
+import { Client } from '../Client';
+import type { APIEpisode, APISimplifiedEpisode } from '../types';
 
 export class Episode<S = false> extends Base {
 	/**

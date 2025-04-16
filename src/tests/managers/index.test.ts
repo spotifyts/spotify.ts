@@ -1,6 +1,6 @@
 import { test } from '../test';
 import { describe, expect } from 'vitest';
-import { Album, Artist, Episode, Playlist, Show, Track, Audiobook } from '../../lib';
+import { Album, Artist, Episode, Playlist, Show, Track, Audiobook } from '../../lib/classes';
 
 describe('All Manager tests', () => {
 	test('AlbumsManager.fetch returns Album', async ({ client }) => {

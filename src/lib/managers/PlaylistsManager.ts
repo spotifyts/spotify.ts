@@ -1,5 +1,8 @@
-import { BaseManager } from '.';
-import { Playlist, APIPlaylist, SpotifyTSError, type Client, type APIImage, type APISimplifiedPlaylist } from '..';
+import { BaseManager } from './BaseManager';
+import { Playlist } from '../classes/Playlist';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import type { APIPlaylist, APIImage, APISimplifiedPlaylist } from '../types';
 
 export class PlaylistsManager extends BaseManager {
 	public constructor(client: Client) {

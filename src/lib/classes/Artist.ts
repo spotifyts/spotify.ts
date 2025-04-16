@@ -1,5 +1,5 @@
-import { Base } from './';
-import type { Client } from '../';
+import { Base } from './Base';
+import type { Client } from '../Client';
 import type { APIArtist } from '../types';
 
 export class Artist extends Base {

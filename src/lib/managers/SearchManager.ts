@@ -1,19 +1,8 @@
-import { BaseManager } from './';
-import {
-	SpotifyTSError,
-	Track,
-	Artist,
-	Album,
-	Playlist,
-	Show,
-	Episode,
-	Audiobook,
-	type Client,
-	type SearchOptions,
-	type FilteredSearchResult,
-	type SearchResponse,
-	type SearchResult
-} from '../';
+import { BaseManager } from './BaseManager';
+import { Track, Artist, Album, Playlist, Show, Episode, Audiobook } from '../classes';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import type { SearchOptions, FilteredSearchResult, SearchResponse, SearchResult } from '../types';
 
 export class SearchManager extends BaseManager {
 	public constructor(client: Client) {

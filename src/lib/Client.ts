@@ -1,5 +1,5 @@
 import { getAccessToken } from './util/util';
-import { SpotifyTSError } from './errors';
+import { SpotifyTSError } from './errors/SpotifyTSError';
 
 import { RequestManager } from './rest';
 import {

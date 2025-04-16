@@ -1,4 +1,5 @@
-import { RequestMethods, type Client } from '..';
+import { RequestMethods } from '../Constants';
+import type { Client } from '../Client';
 
 export class BaseManager {
 	/**

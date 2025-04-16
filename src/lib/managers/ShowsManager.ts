@@ -1,5 +1,8 @@
-import { BaseManager } from '.';
-import { Show, Episode, SpotifyTSError, type Client, type APIShow, type APIEpisode } from '..';
+import { BaseManager } from './BaseManager';
+import { Show, Episode } from '../classes';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import type { APIShow, APIEpisode } from '..';
 
 export class ShowsManager extends BaseManager {
 	public constructor(client: Client) {

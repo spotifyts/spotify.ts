@@ -1,5 +1,8 @@
-import { BaseManager } from '.';
-import { SpotifyTSError, Audiobook, type Client, type APIAudiobook } from '..';
+import { BaseManager } from './BaseManager';
+import { Audiobook } from '../classes/Audiobook';
+import { SpotifyTSError } from '../errors/SpotifyTSError';
+import type { Client } from '../Client';
+import type { APIAudiobook } from '../types';
 
 export class AudiobooksManager extends BaseManager {
 	public constructor(client: Client) {

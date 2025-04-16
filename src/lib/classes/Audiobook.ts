@@ -1,5 +1,5 @@
-import { Base } from './';
-import type { Client } from '../';
+import { Base } from './Base';
+import type { Client } from '../Client';
 import type { APIAudiobook, APISimplifiedAudiobook } from '../types';
 
 export class Audiobook<S = false> extends Base {

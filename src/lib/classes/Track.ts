@@ -1,5 +1,6 @@
-import { Base } from './';
-import type { APITrack, Client } from '../';
+import { Base } from './Base';
+import { Client } from '../Client';
+import type { APITrack } from '../types';
 
 export class Track<S = false> extends Base {
 	/**

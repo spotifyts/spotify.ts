@@ -1,5 +1,5 @@
-import { BaseManager } from '.';
-import type { Client } from '../../';
+import { BaseManager } from './BaseManager';
+import type { Client } from '../Client';
 
 export class MarketsManager extends BaseManager {
 	public constructor(client: Client) {

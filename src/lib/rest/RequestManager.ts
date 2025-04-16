@@ -1,8 +1,8 @@
 import { AsyncQueue } from '@sapphire/async-queue';
 import { SpotifyAPIError, SpotifyRegularError } from '../errors';
-import { APIRequest } from './';
-import { Client } from '../Client';
-import { RequestMethodTypes } from '../Constants';
+import { APIRequest } from './ApiRequest';
+import type { Client } from '../Client';
+import type { RequestMethodTypes } from '../Constants';
 
 export class RequestManager {
 	/**
