@@ -19,8 +19,6 @@ export async function getAccessToken(client: Client) {
 	const parsed = (await data.json()) as SpotifyAPIAccessTokenResponse;
 	if (parsed.error && parsed.error_description) throw new SpotifyAPIError(parsed.error_description, data.status, parsed.error);
 
-	client.options.accessToken = parsed.access_token;
-
 	return {
 		token: parsed.access_token,
 		expiresIn: parsed.expires_in

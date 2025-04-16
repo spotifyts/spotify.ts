@@ -1,6 +1,5 @@
 import { getAccessToken } from './util/util';
 import { SpotifyTSError } from './errors/SpotifyTSError';
-
 import { RequestManager } from './rest';
 import {
 	AlbumsManager,
@@ -31,6 +30,13 @@ export interface ClientOptions {
 	 * The access token generated from the client ID and secret.
 	 */
 	accessToken?: string | null;
+
+	/**
+	 * Whether the access token should be regenerated after it expires.
+	 * If this is false, the interval for regenerating the access token will not be created.
+	 * Defaults to `true`.
+	 */
+	persistent?: boolean;
 }
 
 export class Client {
@@ -113,7 +119,7 @@ export class Client {
 	/**
 	 * The interval where the oauth token is re-generated.
 	 */
-	private interval!: NodeJS.Timeout;
+	private interval!: NodeJS.Timeout | null;
 
 	public constructor(options: ClientOptions) {
 		const { clientId, clientSecret } = options;
@@ -127,13 +133,20 @@ export class Client {
 	}
 
 	/**
-	 * Generates (and keeps generating a new token every hour or so) an Oauth token used for making requests to the Spotify API. It is necessary to call this method before using any managers.
+	 * Generates (and keeps generating a new token every hour or so) an Oauth token used for making requests to the Spotify API.
+	 * It is necessary to call this method before using any managers.
 	 */
 	public async start(): Promise<this> {
-		const { expiresIn } = await getAccessToken(this);
-		this.interval = setInterval(() => getAccessToken(this), expiresIn * 1000);
+		const { token, expiresIn } = await getAccessToken(this);
+
+		this.options.accessToken = token;
+
+		if (this.options.persistent !== false) {
+			this.interval = setInterval(() => getAccessToken(this), expiresIn * 1000);
+		}
 
 		this.registerManagers();
+
 		return this;
 	}
 
@@ -141,7 +154,8 @@ export class Client {
 	 * Destroys the Client, clears its interval.
 	 */
 	public destroy(): this {
-		clearTimeout(this.interval);
+		if (this.interval) clearTimeout(this.interval);
+
 		this.options.accessToken = null;
 
 		return this;
