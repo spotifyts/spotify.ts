@@ -1,7 +1,8 @@
-import { Base } from '.';
-import type { APIEpisode, Client } from '../';
+import { Base } from './Base';
+import { Client } from '../Client';
+import type { APIEpisode, APISimplifiedEpisode } from '../types';
 
-export class Episode extends Base {
+export class Episode<S = false> extends Base {
 	/**
 	 * The Spotify ID for the episode.
 	 */
@@ -90,9 +91,9 @@ export class Episode extends Base {
 	/**
 	 * The show this episode is in.
 	 */
-	public show!: APIEpisode['show'];
+	public show!: S extends true ? null : APIEpisode['show'];
 
-	public constructor(client: Client, data: APIEpisode) {
+	public constructor(client: Client, data: S extends true ? APISimplifiedEpisode : APIEpisode) {
 		super(client);
 		Object.assign(this, data);
 	}

@@ -1,26 +1,24 @@
-import phin from 'phin';
 import { URLSearchParams } from 'node:url';
-import { RequestMethods, SpotifyAPIError, type Client } from '..';
+import { SpotifyAPIError } from '../errors/SpotifyAPIError';
+import { RequestMethods } from '../Constants';
+import type { Client } from '../Client';
 
 export async function getAccessToken(client: Client) {
 	const { clientId, clientSecret } = client.options;
 	const encodedCreds = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
-	const { body, statusCode } = await phin({
+	const data = await fetch('https://accounts.spotify.com/api/token', {
 		method: RequestMethods.Post,
-		url: 'https://accounts.spotify.com/api/token',
 		headers: {
 			Authorization: `Basic ${encodedCreds}`,
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
-		data: new URLSearchParams({ grant_type: 'client_credentials' }).toString(),
-		parse: 'json'
+		body: new URLSearchParams({ grant_type: 'client_credentials' }).toString()
 	});
 
-	const parsed = body as SpotifyAPIAccessTokenResponse;
-	if (parsed.error && parsed.error_description) throw new SpotifyAPIError(parsed.error_description, statusCode!, parsed.error);
+	const parsed = (await data.json()) as SpotifyAPIAccessTokenResponse;
+	if (parsed.error && parsed.error_description) throw new SpotifyAPIError(parsed.error_description, data.status, parsed.error);
 
-	client.options.accessToken = parsed.access_token;
 	return {
 		token: parsed.access_token,
 		expiresIn: parsed.expires_in

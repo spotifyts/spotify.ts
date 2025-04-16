@@ -1,7 +1,6 @@
 import { getAccessToken } from './util/util';
-import { SpotifyTSError } from './errors';
-
-import { RestManager } from './rest';
+import { SpotifyTSError } from './errors/SpotifyTSError';
+import { RequestManager } from './rest';
 import {
 	AlbumsManager,
 	ArtistsManager,
@@ -9,13 +8,12 @@ import {
 	CategoriesManager,
 	ChaptersManager,
 	EpisodesManager,
-	GeneresManager,
 	MarketsManager,
 	PlaylistsManager,
 	SearchManager,
 	ShowsManager,
 	TracksManager
-} from '../managers';
+} from './managers';
 
 export interface ClientOptions {
 	/**
@@ -32,6 +30,13 @@ export interface ClientOptions {
 	 * The access token generated from the client ID and secret.
 	 */
 	accessToken?: string | null;
+
+	/**
+	 * Whether the access token should be regenerated after it expires.
+	 * If this is false, the interval for regenerating the access token will not be created.
+	 * Defaults to `true`.
+	 */
+	persistent?: boolean;
 }
 
 export class Client {
@@ -44,7 +49,7 @@ export class Client {
 	 * The rest manager used to make requests to the API.
 	 * @type {RestManager}
 	 */
-	public rest!: RestManager;
+	public rest!: RequestManager;
 
 	/**
 	 * The manager for handling albums.
@@ -83,12 +88,6 @@ export class Client {
 	public episodes!: EpisodesManager;
 
 	/**
-	 * The manager for handling genres.
-	 * @type {GeneresManager}
-	 */
-	public genres!: GeneresManager;
-
-	/**
 	 * The manager for handling markets.
 	 * @type {MarketsManager}
 	 */
@@ -120,7 +119,7 @@ export class Client {
 	/**
 	 * The interval where the oauth token is re-generated.
 	 */
-	private interval!: NodeJS.Timeout;
+	private interval!: NodeJS.Timeout | null;
 
 	public constructor(options: ClientOptions) {
 		const { clientId, clientSecret } = options;
@@ -134,14 +133,20 @@ export class Client {
 	}
 
 	/**
-	 * Generates (and keeps generating a new token every hour or so) an Oauth token used for making requests to the Spotify API. It is necessary to call this method before using any managers.
-	 * @returns {Promise<Client>} The instantiated client.
+	 * Generates (and keeps generating a new token every hour or so) an Oauth token used for making requests to the Spotify API.
+	 * It is necessary to call this method before using any managers.
 	 */
 	public async start(): Promise<this> {
-		const { expiresIn } = await getAccessToken(this);
-		this.interval = setInterval(() => getAccessToken(this), expiresIn * 1000);
+		const { token, expiresIn } = await getAccessToken(this);
+
+		this.options.accessToken = token;
+
+		if (this.options.persistent !== false) {
+			this.interval = setInterval(() => getAccessToken(this), expiresIn * 1000);
+		}
 
 		this.registerManagers();
+
 		return this;
 	}
 
@@ -149,21 +154,21 @@ export class Client {
 	 * Destroys the Client, clears its interval.
 	 */
 	public destroy(): this {
-		clearTimeout(this.interval);
+		if (this.interval) clearTimeout(this.interval);
+
 		this.options.accessToken = null;
 
 		return this;
 	}
 
 	private registerManagers() {
-		this.rest = new RestManager(this);
+		this.rest = new RequestManager(this);
 		this.albums = new AlbumsManager(this);
 		this.artists = new ArtistsManager(this);
 		this.audiobooks = new AudiobooksManager(this);
 		this.categories = new CategoriesManager(this);
 		this.chapters = new ChaptersManager(this);
 		this.episodes = new EpisodesManager(this);
-		this.genres = new GeneresManager(this);
 		this.markets = new MarketsManager(this);
 		this.playlists = new PlaylistsManager(this);
 		this.searches = new SearchManager(this);

@@ -1,42 +1,37 @@
-import type { APIAlbum, APIArtist, APIEpisode, APIPlaylist, APIShow, APITrack } from '../classes';
+import type { Album, Artist, Audiobook, Episode, Playlist, Show, Track } from '../../classes';
+import type { APIAlbum, APIArtist, APIAudiobook, APIEpisode, APIPlaylist, APIShow, APITrack } from '../classes';
 
 export interface SearchOptions {
 	query: string;
 	type: SearchOptionsType[];
-	include_external?: boolean | string;
 	limit?: number;
 	market?: string;
 	offset?: number;
 }
 
-type SearchOptionsType = 'album' | 'artist' | 'playlist' | 'track' | 'show' | 'episode';
+export type SearchOptionsType = 'album' | 'artist' | 'playlist' | 'track' | 'show' | 'episode' | 'audiobook';
 
-export interface SearchRequestQuery {
-	q: string;
-	type: SearchOptionsType[];
-	include_external?: boolean;
-	limit?: number;
-	market?: string;
-	offset?: number;
-}
-
+type SearchResponseItem<T> = {
+	items: T[];
+};
 export interface SearchResponse {
-	tracks?: {
-		items: APITrack[];
-	};
-	artists?: {
-		items: APIArtist[];
-	};
-	albums?: {
-		items: APIAlbum[];
-	};
-	playlists?: {
-		items: APIPlaylist[];
-	};
-	shows?: {
-		items: APIShow[];
-	};
-	episodes?: {
-		items: APIEpisode[];
-	};
+	tracks?: SearchResponseItem<APITrack>;
+	artists?: SearchResponseItem<APIArtist>;
+	albums?: SearchResponseItem<APIAlbum>;
+	playlists?: SearchResponseItem<APIPlaylist>;
+	shows?: SearchResponseItem<APIShow>;
+	episodes?: SearchResponseItem<APIEpisode>;
+	audiobooks?: SearchResponseItem<APIAudiobook>;
 }
+
+export interface SearchResult {
+	tracks: Track[];
+	artists: Artist[];
+	albums: Album[];
+	playlists: Playlist[];
+	shows: Show[];
+	audiobooks: Audiobook[];
+	episodes: Episode[];
+}
+
+export type FilteredSearchResult<T extends SearchOptionsType[]> = Pick<SearchResult, `${T[number]}s`>;

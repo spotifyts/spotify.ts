@@ -1,4 +1,5 @@
-import type { APIEpisode, APIImage } from '.';
+import type { APIEpisode, APIImage } from './';
+import type { APIObjects } from '../other';
 
 export interface APIShow {
 	id: string;
@@ -14,7 +15,10 @@ export interface APIShow {
 	explicit: boolean;
 	is_externally_hosted: boolean | null;
 	images: APIImage[];
-	external_urls: { spotify: string };
-	copyrights: { text: string; type: string };
+	external_urls: APIObjects['external_urls'];
+	copyrights: APIObjects['copyrights'];
+	total_episodes: number;
 	episodes: { items: APIEpisode[] };
 }
+
+export interface APISimplifiedShow extends Omit<APIShow, 'episodes'> {}

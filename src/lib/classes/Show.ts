@@ -1,7 +1,8 @@
-import { Base } from '.';
-import type { APIShow, Client } from '../';
+import { Base } from './Base';
+import { Client } from '../Client';
+import type { APIShow, APISimplifiedShow } from '../types';
 
-export class Show extends Base {
+export class Show<S = false> extends Base {
 	/**
 	 * The Spotify ID of the show.
 	 */
@@ -80,20 +81,20 @@ export class Show extends Base {
 	/**
 	 * The episodes this show has.
 	 */
-	public episodes!: APIShow['episodes'];
+	public episodes!: S extends true ? null : APIShow['episodes'];
 
-	public constructor(client: Client, data: APIShow) {
+	public constructor(client: Client, data: S extends true ? APISimplifiedShow : APIShow) {
 		super(client);
 		Object.assign(this, data);
 	}
 
 	/**
 	 * Get the episodes of this show.
-	 * @param {number} [limit]: The maximum number of episodes to return.
-	 * @param {number} [offset]: The index of the first episode to return.
-	 * @param {string} [country]: An ISO 3166-1 alpha-2 country code.
+	 * @param {number} [limit] The maximum number of episodes to return.
+	 * @param {number} [offset] The index of the first episode to return.
+	 * @param {string} [market] An ISO 3166-1 alpha-2 market code.
 	 */
-	public async getEpisodes(limit?: number, offset?: number, country?: string) {
-		return this.client.shows.getEpisodes(this.id, limit, offset, country);
+	public async getEpisodes(limit?: number, offset?: number, market?: string) {
+		return this.client.shows.getEpisodes(this.id, limit, offset, market);
 	}
 }

@@ -1,4 +1,4 @@
-import type { APIImage } from '.';
+import type { APIImage } from './';
 
 export interface APICategory {
 	id: string;
